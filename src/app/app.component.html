@@ -1,0 +1,16 @@
+<main>
+  <div class="left-bar menu">
+    <ul>
+      <ng-container *ngFor="let yard of graveyards">
+        <li (click)="getGravePlotsByGraveyardId(yard.friedhofId)">{{yard.friedhof}}</li>
+      </ng-container>
+    </ul>
+    <div *ngIf="graveyards.length" style="text-align: center; margin-top: 25px;">
+      <button class="button" (click)="changeStyleExpireGraves()">Expire Graves</button>
+      <p><strong>Green</strong> grave plots that contain at least one deceased person.</p>
+    </div>
+  </div>
+  <div class="map-container">
+    <app-map [map]="map" (graveYards)="allGraveyards($event)"></app-map>
+  </div>
+</main>
